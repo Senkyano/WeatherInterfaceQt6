@@ -3,9 +3,12 @@
 #include <map>
 #include <variant>
 
-using MetricValue = std::variant<int, float, bool, std::string>;
+enum class	Threshold {DANGER, WARNING, SAFE};
+enum class	Direction {NORTH, SOUTH, EAST, OUEST};
+enum class	Health {CONNECTED, DISCONNECTED, MAINTENANCE, DESTROY};
 
-enum	class Health {RUNNING, DOWN, MAINTENANCE, DESTROY};
+using MetricValue = std::variant<int, float, bool, std::string, Threshold, Direction, Health>;
+
 
 class IMonitoredEntity {
 	public:
@@ -13,7 +16,6 @@ class IMonitoredEntity {
 
 		virtual std::string getId() const = 0;
 		virtual std::string getName() const = 0;
-		virtual std::string getStatus() const = 0;
 		virtual Health getHealth() const = 0;
 
 		virtual std::map<std::string, MetricValue> getMetrics() const = 0;

@@ -5,7 +5,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: "Drone Control Center"
+    title: "Monitoring Entity"
     color: "#0D1117"
 
     Text {

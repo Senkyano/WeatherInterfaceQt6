@@ -1,9 +1,7 @@
 #include "WeatherStation.hpp"
 
 WeatherStation::WeatherStation(std::string id, std::string name)
-	: id_(id), name_(name) {
-
-}
+	: id_(id), name_(name) {}
 
 WeatherStation::~WeatherStation() {}
 
@@ -15,12 +13,13 @@ std::string WeatherStation::getName() const {
 	return (name_);
 }
 
-std::string WeatherStation::getStatus() const {
-	// return (status_);
+Threshold WeatherStation::getStatus() const {
+	return (status_);
 }
 
 std::map<std::string, MetricValue>	WeatherStation::getMetrics() const {
 	return {
+		{"Health", materialHealth_},
 		{"Temperature", temperature_},
 		{"Humidity", humidity_},
 		{"Pressure", pressure_}
